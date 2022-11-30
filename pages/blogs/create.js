@@ -17,13 +17,8 @@ import {
 } from "../../shared/data/forms/formlayouts";
 import Seo from "../../shared/layout-components/seo/seo";
 const FormLayouts = () => {
-  const [course, setCourse] = useState("");
-  const [price, setPrice] = useState("");
-  const [duration, setDuration] = useState("");
+  const [blog_title, setBlogTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [requirements, setRequirements] = useState("");
-  const [learning_outcome, setLearningOutcome] = useState("");
-  const [who_this_course_is_for, setWhoThisCourseIsFor] = useState("");
 
   const submitCourse = async () => {
     const response = await fetch(
@@ -31,13 +26,8 @@ const FormLayouts = () => {
       {
         method: "POST",
         body: JSON.stringify({
-          course,
-          price,
-          duration,
+          blog_title,
           description,
-          requirements,
-          learning_outcome,
-          who_this_course_is_for,
         }),
         header: {
           "Content-Type": "application/json",
@@ -48,6 +38,7 @@ const FormLayouts = () => {
     const data = await response.json();
     if (data.errorMessage) {
       alert("ERROR Found : \n\n" + data.errorMessage);
+      console.log(data);
     } else {
       alert("Operation Successful");
     }
@@ -69,37 +60,13 @@ const FormLayouts = () => {
               <div className="">
                 <div className="row row-xs align-items-center mg-b-20">
                   <div className="col-md-4">
-                    <label className="mg-b-0">Course Title</label>
+                    <label className="mg-b-0">Title</label>
                   </div>
                   <div className="col-md-8 mg-t-5 mg-md-t-0">
                     <input
                       className="form-control"
                       type="text"
-                      onChange={(e) => setCourse(e.target.value)}
-                    />
-                  </div>
-                </div>
-                <div className="row row-xs align-items-center mg-b-20">
-                  <div className="col-md-4">
-                    <label className="mg-b-0">Price</label>
-                  </div>
-                  <div className="col-md-8 mg-t-5 mg-md-t-0">
-                    <input
-                      className="form-control"
-                      type="number"
-                      onChange={(e) => setPrice(e.target.value)}
-                    />
-                  </div>
-                </div>
-                <div className="row row-xs align-items-center mg-b-20">
-                  <div className="col-md-4">
-                    <label className="mg-b-0">Duration</label>
-                  </div>
-                  <div className="col-md-8 mg-t-5 mg-md-t-0">
-                    <input
-                      className="form-control"
-                      type="number"
-                      onChange={(e) => setDuration(e.target.value)}
+                      onChange={(e) => setBlogTitle(e.target.value)}
                     />
                   </div>
                 </div>
@@ -110,44 +77,8 @@ const FormLayouts = () => {
                   <div className="col-md-8 mg-t-5 mg-md-t-0">
                     <textarea
                       className="form-control"
-                      type="number"
+                      type="text"
                       onChange={(e) => setDescription(e.target.value)}
-                    />
-                  </div>
-                </div>
-                <div className="row row-xs align-items-center mg-b-20">
-                  <div className="col-md-4">
-                    <label className="mg-b-0">Requirements</label>
-                  </div>
-                  <div className="col-md-8 mg-t-5 mg-md-t-0">
-                    <textarea
-                      className="form-control"
-                      type="number"
-                      onChange={(e) => setRequirements(e.target.value)}
-                    />
-                  </div>
-                </div>
-                <div className="row row-xs align-items-center mg-b-20">
-                  <div className="col-md-4">
-                    <label className="mg-b-0">What You Will Learn</label>
-                  </div>
-                  <div className="col-md-8 mg-t-5 mg-md-t-0">
-                    <textarea
-                      className="form-control"
-                      type="number"
-                      onChange={(e) => setLearningOutcome(e.target.value)}
-                    />
-                  </div>
-                </div>
-                <div className="row row-xs align-items-center mg-b-20">
-                  <div className="col-md-4">
-                    <label className="mg-b-0">Who this course for</label>
-                  </div>
-                  <div className="col-md-8 mg-t-5 mg-md-t-0">
-                    <textarea
-                      className="form-control"
-                      type="number"
-                      onChange={(e) => setWhoThisCourseIsFor(e.target.value)}
                     />
                   </div>
                 </div>

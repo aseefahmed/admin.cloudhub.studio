@@ -27,7 +27,7 @@ const FormLayouts = () => {
 
   const submitCourse = async () => {
     const response = await fetch(
-      "https://499nkl85l0.execute-api.ap-southeast-2.amazonaws.com/prod/blogs",
+      "https://499nkl85l0.execute-api.ap-southeast-2.amazonaws.com/prod/courses",
       {
         method: "POST",
         body: JSON.stringify({
